@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.0.1" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <EmbeddedResource Update="Messages.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <Compile Remove="CodeTemplates\CustomResultTemplate.cs" />
+      <EmbeddedResource Include="CodeTemplates\CustomResultTemplate.cs" />
+      <Compile Remove="CodeTemplates\CustomResultDataTemplate.cs" />
+      <EmbeddedResource Include="CodeTemplates\CustomResultDataTemplate.cs" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Compile Update="Messages.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Messages.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>
