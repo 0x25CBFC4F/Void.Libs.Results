@@ -10,7 +10,7 @@
 
     <!-- NuGet Package Settings -->
     <PropertyGroup>
-        <PackageVersion>0.1</PackageVersion>
+        <PackageVersion>0.1.$(build_ver)</PackageVersion>
         <Title>Void's Results Library Source Generator</Title>
         <Authors>0x25CBFC4F</Authors>
         <Description>This is a developer-experience oriented library that provides simple and custom result types.</Description>
