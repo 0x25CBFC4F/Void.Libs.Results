@@ -14,8 +14,7 @@
         <Title>Void's Results Library</Title>
         <Authors>0x25CBFC4F</Authors>
         <Description>
-            This is a developer-experience oriented library that provides simple and custom result types.
-            Please be aware: to get the most of this library you must reference source generator and enable source generator capabilities of your IDE. Read more at Github.
+            This is a developer-experience oriented library that provides simple and custom result types. Please be aware: to get the most of this library you must reference source generator and enable source generator capabilities of your IDE. Read more at Github.
         </Description>
         <Copyright>0x25CBFC4F</Copyright>
         <PackageProjectUrl>https://github.com/0x25CBFC4F/Void.Libs.Results</PackageProjectUrl>
@@ -26,7 +25,7 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <None Include="..\logo.png">
+        <None Include="..\logos\logo.png">
             <Pack>True</Pack>
             <PackagePath/>
             <Link>logo.png</Link>

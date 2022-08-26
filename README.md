@@ -1,4 +1,7 @@
-# Void.Libs.Results
+<p align="center">
+    <img alt="Project logo" src="logos/project-github-logo.png" />
+</p>
 
-Exteremely early preview! A lot of stuff to be done..
+---
 
+Content incoming..

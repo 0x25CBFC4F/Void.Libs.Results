@@ -23,7 +23,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\logo.png">
+        <None Include="..\logos\logo.png">
             <Pack>True</Pack>
             <PackagePath />
             <Link>logo.png</Link>
