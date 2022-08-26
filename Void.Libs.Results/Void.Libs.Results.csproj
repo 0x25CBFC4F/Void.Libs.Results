@@ -8,4 +8,30 @@
         <LangVersion>default</LangVersion>
     </PropertyGroup>
 
+    <!-- NuGet Package Settings -->
+    <PropertyGroup>
+        <PackageVersion>0.1</PackageVersion>
+        <Title>Void's Results Library</Title>
+        <Authors>0x25CBFC4F</Authors>
+        <Description>
+            This is a developer-experience oriented library that provides simple and custom result types.
+            Please be aware: to get the most of this library you must reference source generator and enable source generator capabilities of your IDE. Read more at Github.
+        </Description>
+        <Copyright>0x25CBFC4F</Copyright>
+        <PackageProjectUrl>https://github.com/0x25CBFC4F/Void.Libs.Results</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/0x25CBFC4F/Void.Libs.Results/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageIcon>logo.png</PackageIcon>
+        <RepositoryUrl>https://github.com/0x25CBFC4F/Void.Libs.Results</RepositoryUrl>
+        <PackageTags>result</PackageTags>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <None Include="..\logo.png">
+            <Pack>True</Pack>
+            <PackagePath/>
+            <Link>logo.png</Link>
+        </None>
+    </ItemGroup>
+    <!-- End of NuGet Package Settings -->
+
 </Project>

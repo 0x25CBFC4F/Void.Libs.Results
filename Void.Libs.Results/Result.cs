@@ -2,8 +2,8 @@
 
 public class Result
 {
-    public bool Successful { get; set; } = true;
-    public ReportedMessage Error { get; private set; }
+    public bool Successful { get; private set; } = true;
+    public ReportedMessage? Error { get; private set; }
     public IList<ReportedMessage> Warnings { get; } = new List<ReportedMessage>();
 
     public static Result New => new();
@@ -45,7 +45,7 @@ public class Result<TData> : Result
 {
     public TData? Data { get; set; }
     
-    public static Result<TData> New => new();
+    public new static Result<TData> New => new();
 
     public Result<TData> WithResult(TData? data)
     {

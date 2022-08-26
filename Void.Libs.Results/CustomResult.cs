@@ -7,8 +7,8 @@ public abstract class CustomResult<TWarningEnum, TErrorEnum>
     where TWarningEnum : Enum
     where TErrorEnum : Enum
 {
-    public bool Successful { get; set; } = true;
-    public CustomReportedMessage<TErrorEnum> Error { get; private set; }
+    public bool Successful { get; private set; } = true;
+    public CustomReportedMessage<TErrorEnum>? Error { get; private set; }
     public IList<CustomReportedMessage<TWarningEnum>> Warnings { get; } = new List<CustomReportedMessage<TWarningEnum>>();
 
     protected void InternalWithWarning(TWarningEnum warning)
@@ -55,7 +55,7 @@ public class CustomResult<TWarningEnum, TErrorEnum, TData> : CustomResult<TWarni
     where TWarningEnum : Enum
     where TErrorEnum : Enum
 {
-    public TData? Data { get; set; }
+    public TData? Data { get; private set; }
 
     protected void InternalWithResult(TData? result)
     {

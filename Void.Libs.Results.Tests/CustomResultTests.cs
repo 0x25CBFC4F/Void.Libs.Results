@@ -58,7 +58,7 @@ public class CustomResultTests
         Assert.False(result.Successful);
         Assert.NotNull(result.Error);
         
-        Assert.Equal(exception.Message, result.Error.Message);
+        Assert.Equal(exception.Message, result.Error!.Message);
         Assert.Equal(exception.StackTrace, result.Error.CausedBy);
         Assert.Same(exception, result.Error.Exception);
     }
