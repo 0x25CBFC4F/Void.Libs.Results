@@ -10,6 +10,7 @@
 
     <!-- NuGet Package Settings -->
     <PropertyGroup>
+        <build_ver>0-local-test</build_ver>
         <PackageVersion>0.1.$(build_ver)</PackageVersion>
         <Title>Void's Results Library</Title>
         <Authors>0x25CBFC4F</Authors>

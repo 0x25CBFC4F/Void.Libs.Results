@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Text;
 using Void.Libs.Results.SourceGen.CodeTemplates;
 
 namespace Void.Libs.Results.SourceGen;
@@ -22,11 +23,13 @@ public class ImplicitResultGenerator : ISourceGenerator
 
     public void Execute(GeneratorExecutionContext context)
     {
+#if DEBUG
         if (!Debugger.IsAttached)
         {
             //Debugger.Launch();
         }
-
+#endif
+        
         var classesToProcess = (context.SyntaxReceiver as AttributeSyntaxReceiver)!.ClassesToProcess;
 
         foreach (var syntax in classesToProcess)
@@ -95,6 +98,7 @@ public class ImplicitResultGenerator : ISourceGenerator
             var localizedString = new LocalizableResourceString("CantBeANestedClass", Messages.ResourceManager, typeof(Messages), className);
             var diagnostic = Diagnostic.Create("VRG002", "VRG", localizedString, DiagnosticSeverity.Error, DiagnosticSeverity.Error, true, 0, location: syntax.Identifier.GetLocation());
             context.ReportDiagnostic(diagnostic);
+            return null;
         }
 
         var baseType = syntax.BaseList?.Types.FirstOrDefault(x => AvailableResultTypes.Contains(x.Type.ChildTokens().First().ToString()))?.ChildNodes().First();
@@ -102,9 +106,26 @@ public class ImplicitResultGenerator : ISourceGenerator
         var genericArguments = baseType?.ChildNodes().First().ChildNodes().Select(node => node.ToString()).ToArray();
         classNamespaceSyntax = classNamespaceSyntax?.ChildNodes().First();
 
-        if (baseTypeName == null || genericArguments == null || classNamespaceSyntax is not QualifiedNameSyntax)
+        if (baseTypeName == null || genericArguments == null || classNamespaceSyntax is not QualifiedNameSyntax and not IdentifierNameSyntax)
         {
-            var localizedString = new LocalizableResourceString("UnableToExtractInformation", Messages.ResourceManager, typeof(Messages), className);
+            var failedToFind = new List<string>();
+
+            if (baseTypeName == null)
+            {
+                failedToFind.Add(nameof(baseTypeName));
+            }
+            
+            if (genericArguments == null)
+            {
+                failedToFind.Add(nameof(genericArguments));
+            }
+            
+            if (classNamespaceSyntax is not QualifiedNameSyntax)
+            {
+                failedToFind.Add(nameof(classNamespaceSyntax));
+            }
+
+            var localizedString = new LocalizableResourceString("UnableToExtractInformation", Messages.ResourceManager, typeof(Messages), className, string.Join(", ", failedToFind));
             var diagnostic = Diagnostic.Create("VRG100", "VRG", localizedString, DiagnosticSeverity.Error, DiagnosticSeverity.Error, true, 0, location: syntax.Identifier.GetLocation());
             context.ReportDiagnostic(diagnostic);
             return null;

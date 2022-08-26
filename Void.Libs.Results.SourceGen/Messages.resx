@@ -21,7 +21,7 @@
         <value>Result class '{0}' can't be a nested class.</value>
     </data>
     <data name="UnableToExtractInformation" xml:space="preserve">
-        <value>Unable to extract information for class '{0}'. This source generator may be outdated.</value>
+        <value>Unable to extract information for class '{0}'. This source generator may be outdated. Failed to find: {1}</value>
     </data>
     <data name="ShouldBePartial" xml:space="preserve">
         <value>Result class '{0}' should be partial.</value>

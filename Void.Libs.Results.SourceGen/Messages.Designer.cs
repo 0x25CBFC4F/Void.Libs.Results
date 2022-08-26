@@ -78,7 +78,7 @@ namespace Void.Libs.Results.SourceGen {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to extract information for class &apos;{0}&apos;. This source generator may be outdated..
+        ///   Looks up a localized string similar to Unable to extract information for class &apos;{0}&apos;. This source generator may be outdated. Failed to find: {1}.
         /// </summary>
         internal static string UnableToExtractInformation {
             get {

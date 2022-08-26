@@ -11,7 +11,7 @@ public class CustomResultTests
             .WithWarning(TestWarning.A)
             .WithWarning(TestWarning.B, string.Empty)
             .WithWarning(new CustomReportedMessage<TestWarning>(TestWarning.C, string.Empty));
-        
+
         Assert.True(result.Successful);
         Assert.NotEmpty(result.Warnings);
         Assert.True(result.Warnings.Count == 3);
