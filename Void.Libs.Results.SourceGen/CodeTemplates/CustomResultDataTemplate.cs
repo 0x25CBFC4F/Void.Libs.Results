@@ -15,10 +15,7 @@ namespace _ClassNameSpace;
 [GeneratedCode("Void.Libs.Results.SourceGen", null)]
 public partial class _ClassName
 {
-    public static _ClassName New()
-    {
-        return new _ClassName();
-    }
+    public static _ClassName New => new();
     
     public _ClassName WithWarning(_WarningEnum warning)
     {
@@ -56,7 +53,13 @@ public partial class _ClassName
         return this;
     }
     
-    protected _ClassName WithResult(_CustomDataType? result)
+    public _ClassName WithException(_ErrorEnum error, Exception ex)
+    {
+        InternalWithException(error, ex);
+        return this;
+    }
+
+    public _ClassName WithResult(_CustomDataType? result)
     {
         InternalWithResult(result);
         return this;

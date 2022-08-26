@@ -7,9 +7,9 @@ public abstract class CustomResult<TWarningEnum, TErrorEnum>
     where TWarningEnum : Enum
     where TErrorEnum : Enum
 {
-    public bool Successful { get; set; }
+    public bool Successful { get; set; } = true;
+    public CustomReportedMessage<TErrorEnum> Error { get; private set; }
     public IList<CustomReportedMessage<TWarningEnum>> Warnings { get; } = new List<CustomReportedMessage<TWarningEnum>>();
-    public IList<CustomReportedMessage<TErrorEnum>> Errors { get; } = new List<CustomReportedMessage<TErrorEnum>>();
 
     protected void InternalWithWarning(TWarningEnum warning)
     {
@@ -29,19 +29,25 @@ public abstract class CustomResult<TWarningEnum, TErrorEnum>
     protected void InternalWithError(TErrorEnum error)
     {
         Successful = false;
-        Errors.Add(new CustomReportedMessage<TErrorEnum>(error, null, null));
+        Error = new CustomReportedMessage<TErrorEnum>(error, null, null);
     }
     
     protected void InternalWithError(TErrorEnum error, string? message, string? causedBy = null)
     {
         Successful = false;
-        Errors.Add(new CustomReportedMessage<TErrorEnum>(error, message, causedBy));
+        Error = new CustomReportedMessage<TErrorEnum>(error, message, causedBy);
     }
 
     protected void InternalWithError(CustomReportedMessage<TErrorEnum> error)
     {
         Successful = false;
-        Errors.Add(error);
+        Error = error;
+    }
+    
+    protected void InternalWithException(TErrorEnum error, Exception ex)
+    {
+        Successful = false;
+        Error = new CustomReportedMessage<TErrorEnum>(error, ex.Message, ex.StackTrace, ex);
     }
 }
 
