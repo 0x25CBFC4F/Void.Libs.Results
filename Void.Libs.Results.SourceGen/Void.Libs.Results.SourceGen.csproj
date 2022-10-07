@@ -31,6 +31,26 @@
             <PackagePath />
             <Link>logo.png</Link>
         </None>
+        
+        <None Update="CodeTemplates\SimpleResultTemplate.tt">
+          <Generator>TextTemplatingFilePreprocessor</Generator>
+          <LastGenOutput>SimpleResultTemplate.cs</LastGenOutput>
+        </None>
+        
+        <None Update="CodeTemplates\CustomResultTemplate.tt">
+          <Generator>TextTemplatingFilePreprocessor</Generator>
+          <LastGenOutput>CustomResultTemplate.cs</LastGenOutput>
+        </None>
+        
+        <None Update="CodeTemplates\ReportedMessageTemplate.tt">
+          <Generator>TextTemplatingFilePreprocessor</Generator>
+          <LastGenOutput>ReportedMessageTemplate.cs</LastGenOutput>
+        </None>
+        
+        <None Update="CodeTemplates\CustomReportedMessageTemplate.tt">
+          <Generator>TextTemplatingFilePreprocessor</Generator>
+          <LastGenOutput>CustomReportedMessageTemplate.cs</LastGenOutput>
+        </None>
     </ItemGroup>
     <!-- End of NuGet Package Settings -->
     
@@ -40,24 +60,31 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="System.CodeDom" Version="6.0.0" />
+        <PackageReference Include="System.Text.Json" Version="6.0.5" />
     </ItemGroup>
     
     <ItemGroup>
-      <EmbeddedResource Update="Messages.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Messages.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <Compile Remove="CodeTemplates\CustomResultTemplate.cs" />
-      <EmbeddedResource Include="CodeTemplates\CustomResultTemplate.cs" />
       <Compile Remove="CodeTemplates\CustomResultDataTemplate.cs" />
-      <EmbeddedResource Include="CodeTemplates\CustomResultDataTemplate.cs" />
-    </ItemGroup>
-    
-    <ItemGroup>
-      <Compile Update="Messages.Designer.cs">
-        <DesignTime>True</DesignTime>
+      <Compile Update="CodeTemplates\SimpleResultTemplate.cs">
         <AutoGen>True</AutoGen>
-        <DependentUpon>Messages.resx</DependentUpon>
+        <DesignTime>True</DesignTime>
+        <DependentUpon>SimpleResultTemplate.tt</DependentUpon>
+      </Compile>
+      <Compile Update="CodeTemplates\CustomResultTemplate.cs">
+        <AutoGen>True</AutoGen>
+        <DesignTime>True</DesignTime>
+        <DependentUpon>CustomResultTemplate.tt</DependentUpon>
+      </Compile>
+      <Compile Update="CodeTemplates\ReportedMessageTemplate.cs">
+        <AutoGen>True</AutoGen>
+        <DesignTime>True</DesignTime>
+        <DependentUpon>ReportedMessageTemplate.tt</DependentUpon>
+      </Compile>
+      <Compile Update="CodeTemplates\CustomReportedMessageTemplate.cs">
+        <AutoGen>True</AutoGen>
+        <DesignTime>True</DesignTime>
+        <DependentUpon>CustomReportedMessageTemplate.tt</DependentUpon>
       </Compile>
     </ItemGroup>
 

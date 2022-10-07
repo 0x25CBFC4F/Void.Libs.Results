@@ -1,0 +1,19 @@
+﻿{
+  "enabled": true,
+  "simple": {
+    "generate": true,
+    "namespace": "Void.Libs.Example.Generated",
+    "className": "SimpleResultExample",
+    "includeDataVariant": true
+  },
+  "custom": [
+    {
+      "namespace": "Void.Libs.Example.Generated",
+      "className": "CustomResultExample",
+      "useWarningEnumForErrors": false,
+      "warningEnum": "Void.Libs.Example.ExampleWarningEnum",
+      "errorEnum": "Void.Libs.Example.ExampleErrorEnum",
+      "includeDataVariant": true
+    }
+  ]
+}
