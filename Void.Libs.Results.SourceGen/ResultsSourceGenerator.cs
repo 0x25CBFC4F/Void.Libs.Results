@@ -90,11 +90,4 @@ public class ResultsSourceGenerator : ISourceGenerator
         var configuration = JsonSerializer.Deserialize<ResultConfiguration>(configurationJson, _jsonSerializerOptions);
         return configuration;
     }
-
-    private static string GetTemplateSourceText(string fileName, ResolvedMethodInfo methodInfo)
-    {
-        var sourceCodeStream = typeof(ResultsSourceGenerator).Assembly.GetManifestResourceStream($"{typeof(CodeTemplatesRoot).Namespace}.{fileName}");
-        using var streamReader = new StreamReader(sourceCodeStream!, Encoding.UTF8);
-        return streamReader.ReadToEnd();
-    }
 }
