@@ -14,6 +14,14 @@
       "warningEnum": "Void.Libs.Example.ExampleWarningEnum",
       "errorEnum": "Void.Libs.Example.ExampleErrorEnum",
       "includeDataVariant": true
+    },
+    {
+      "namespace": "Void.Libs.Example.Generated",
+      "className": "CustomResultExample2",
+      "useWarningEnumForErrors": false,
+      "warningEnum": "Void.Libs.Example.ExampleWarningEnum",
+      "errorEnum": "Void.Libs.Example.ExampleErrorEnum",
+      "includeDataVariant": true
     }
   ]
 }
